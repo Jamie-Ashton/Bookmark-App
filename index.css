@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 :root {
-    --primary-color: blue;
+    --primary-color: gold;
     --border-radius: 5px;
 }
 
@@ -14,3 +14,106 @@ body {
     font-family: "JetBrains Mono", monospace;
 }
 
+h1 {
+    color: black;
+    padding: 20px;
+    background: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    width: 275px;
+    margin: 20px auto 10px;
+}
+
+h1:hover {
+    background: black;
+    color: white;
+}
+
+
+/* bookmarks */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.modal-container {
+    background: grey;
+    display: none;
+    position: fixed; 
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+}
+
+.modal {
+    background: #ffff;
+    box-shadow: black;
+    max-width: 95%;
+    width: 500px;
+}
+
+.close-icon {
+    float: right;
+    color: white;
+    font-size: 24px;
+    position: relative;
+    top: 13px;
+    right: 13px;
+    cursor: pointer;
+}
+
+.modal-header {
+    background: var(--primary-color);
+    color: lightcoral;
+    padding: 15px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.modal-content {
+    padding: 20px;
+    background: whitesmoke;
+}
+
+/* form */
+
+.form-group label {
+    height: 55px;
+}
+
+.form-input {
+    width: 97%;
+    padding: 5px;
+    border: 2px solid var(--primary-color);
+    border: var(--border-radius);
+    display: block;
+    outline: none;
+}
+
+.for-label {
+    color: var(--primary-color);
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    color: grey;
+    background: var(--primary-color);
+    border: none;
+    height: 30px;
+    width: 100px;
+    filter: brightness(110%);
+
+}
+
+button:focus {
+    outline: none;
+}
