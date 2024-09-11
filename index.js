@@ -49,29 +49,34 @@ function buildBookMarkDOM() {
     bookmarksContainer.textContent= ""
 
 
-bookmarks.forEach((bookmark) => {
-    const {name, url} = bookmark
+    bookmarks.forEach((bookmark) => {
+        const {name, url} = bookmark
 
-    const item = document.createElement("div")
-    item.classList.add("item")
+        const item = document.createElement("div")
+        item.classList.add("item")
 
-    const closeIcon = document.createElement("i")
-    closeIcon.classList.add("fas", "fa-times")
-    closeIcon.setAttribute("title", "Delete Bookmark")
-    closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`)
+        const closeIcon = document.createElement("i")
+        closeIcon.classList.add("fas", "fa-times")
+        closeIcon.setAttribute("title", "Delete Bookmark")
+        closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`)
 
-    const linkInfo = document.createElement("div")
-    linkInfo.classList.add("name")
+        const linkInfo = document.createElement("div")
+        linkInfo.classList.add("name")
 
-    const favicon = document.createElement("img")
-    favicon.setAttribute(
-        "src",url
-    )
-    favicon.setAttribute("alt", "Favicon")
+        const favicon = document.createElement("img")
+        favicon.setAttribute(
+            "src",url
+        )
+        favicon.setAttribute("alt", "Favicon")
 
-    const link = document.createElement("a")
-    link.setAttribute("href", `${url}`)
-    link.setAttribute("target", "_blank")
-    link.textContent()
+        const link = document.createElement("a")
+        link.setAttribute("href", `${url}`)
+        link.setAttribute("target", "_blank")
+        link.textContent() = name
+
+        linkInfo.append(favicon, link)
+        item.append(closeIcon, linkInfo)
+        bookmarksContainer.appendChild(item)
+        
 })
 }
