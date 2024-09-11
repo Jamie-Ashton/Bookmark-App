@@ -12,6 +12,7 @@ modalClose.addEventListener("click", () => {
     modal.classList.remove('show-modal')
 })
 
+
 function showModal() {
     modal.classList.add('show-modal')
     websiteNameEl.focus()
