@@ -43,3 +43,67 @@ if(!urlValue.match(regex)) {
     alert('Please provide a valid web address');
     return false;
 }
+
+function buildBookMarkDOM() {
+    bookmarksContainer.textContent= ""
+
+
+bookmarks.forEach((bookmark) => {
+    const {name, url} = bookmark
+
+    const item = document.createElement("div")
+    item.classList.add("item")
+
+    const closeIcon = document.createElement("i")
+    closeIcon.classList.add("fas", "fa-times")
+    closeIcon.setAttribute("title", "Delete Bookmark")
+    closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`)
+
+    const linkInfo = document.createElement("div")
+    linkInfo.classList.add("name")
+
+    const favicon = document.createElement("img")
+    favicon.setAttribute(
+        "src",url
+    )
+    favicon.setAttribute("alt", "Favicon")
+
+    const link = document.createElement("a")
+    link.setAttribute("href", `${url}`)
+    link.setAttribute("target", "_blank")
+    link.textContent()
+
+    linkInfo.append(favicon, link)
+    item.append(closeIcon, linkInfo)
+    bookmarksContainer.appendChild(item)
+})
+}
+
+// fetch bookmarks
+function fetchBookmarks() {
+    //json parse to take a string and convert it into a object
+    // get a bookmark from local storage if available 
+    if (localStorage.getItem("bookmarks")) {
+        bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
+} else {
+    // create a bookmark array in local storage 
+    bookmarks = [{
+            name: "Google",
+            url: "https://google.com"
+        }]
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks)) 
+    } 
+    buildBookmarksDOM()
+}
+
+function deleteBookmark(url) {
+    // Pass the url, loop through the bookmarks array and remove the match URl
+    bookmarks.forEach((bookmark, i ) => {
+        if(bookmark.url === url) {
+            bookmarks.splice(i, 1) // delete the bokmark at index i (URL)
+        }
+    }) 
+    // update the local storage, re-populate the DOM.close-icon
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks))
+    fetchBookmarks()
+}
