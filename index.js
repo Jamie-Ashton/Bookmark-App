@@ -78,5 +78,22 @@ function buildBookMarkDOM() {
         item.append(closeIcon, linkInfo)
         bookmarksContainer.appendChild(item)
         
-})
+        })
+}
+
+//Fetch bookmarks
+function fetchBookmarks() {
+    // json parse to take string and convert to an object
+    // Get a bookmark from a local storage if available
+    if(localStorage.getItem("bookmarks")) {
+        bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+    }
+    else {
+        // create bookmarks array in a local storage (create a sample bookmark)
+        bookmarks = [
+            {name: "Google", url: "https://www.google.com"}
+        ]
+        localStorage.setItem("bookmark", JSON.stringify(bookmarks))
+    }
+    buildBookMarkDOM()
 }
