@@ -107,3 +107,37 @@ function deleteBookmark(url) {
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks))
     fetchBookmarks()
 }
+
+//handle data fro form input
+function storeBookmark(e) {
+    // prevents bookmarks being added to the local storage with URL
+    e.preventDefault()
+
+
+    const nameValue = websiteNameEl.value
+    let urlValue = websiteUrlEl.value
+
+    if (!urlValue.inculdes('http://', 'https://')) {
+        urlValue = `https://${urlValue}`
+    }
+
+    console.log(nameValue, urlValue)
+
+    if(!validate(nameValue, urlValue)) {
+        return false;
+    }
+
+    const bookmark = {
+        name: nameValue,
+        url: urlValue
+    }
+
+    bookmarks.push(bookmark)
+
+    //it is needed to stringefy to be added to back end server.
+    localStorage.setItem("bookmark", JSON.stringify(bookmarks))
+
+    fetchBookmarks()
+    bookmarkForm.rest()
+    websiteNameEl.focus()
+}
