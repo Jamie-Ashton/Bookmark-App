@@ -1,7 +1,7 @@
 const modal = document.getElementById('modal'); // Declaring a const variable with the value modal, referencing the element with the ID 'modal
 const modalShow = document.getElementById('modal-show')
 const modalClose = document.getElementById('modal-close');
-const bookmarkForm = document.getElementById('bookmark-form');
+const bookmarkForm = document.getElementById('bookform');
 const websiteNameEl = document.getElementById('website-name');
 const websiteUrlEl = document.getElementById('website-url');
 const bookmarksContainer = document.getElementById('bookmark-container');
